@@ -1,0 +1,103 @@
+<!--main.wxml-->
+<!--
+<view>
+    <swiper class="swiper_box" indicator-dots="{{indicatorDots}}" vertical="{{vertical}}"
+            autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindchange="swiperchange">
+        <block wx:for="{{images}}">
+            <swiper-item bindtap="itemclick" data-id="{{item.img}}" data-name="{{item.name}}">
+                <image src="{{item.img}}" class="slide-image"/>
+            </swiper-item>
+        </block>
+    </swiper>
+</view>
+-->
+
+<!--nearby.wxml-->
+<!--
+<scroll-view class="sv" scroll-y="true">
+    <view style="overflow:hidden;">
+      <view class="items" wx:for="{{array}}" wx:for-item="item" bindtap="typeclick"  data-code="{{item.code}}" data-text="{{item.text}}" >
+        <image class="item-img" mode="aspectFit" src="{{item.src}}"></image>
+        <view class="item-text">{{item.text}}</view>
+      </view>
+    </view>
+    <view class="data">
+      <text class="data-title">{{title}}</text>
+
+      <view  style="overflow:hidden;">
+        <view class="data-items" wx:for="{{dataArray}}" wx:for-item="item" wx:key="id" bindtap="openmap" 
+              data-lat="{{item.lat}}" data-lng="{{item.lng}}" data-name="{{item.name}}" data-address="{{item.address}}">
+          <image class="data-item-img" mode="aspectFit" src="{{item.img}}"></image>
+          <view class="data-item-text">
+            <view style="width:100%; font-size: 30rpx; padding:2rpx;">{{item.name}}</view>
+            <view style="width:100%; font-size: 25rpx; padding:2rpx;">{{item.address}}</view>
+            <view style="width:100%; font-size: 25rpx; padding:2rpx;">{{item.phone}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <loading hidden="{{loadingHidden}}">
+        加载中...
+  </loading>
+
+
+-->
+
+
+
+
+<view class="container">
+  <view class="page-body">
+    <view class="page-section-page-section-spacing-swiper">
+      <swiper indicator-dots="{{indicatorDots}}"
+        autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+        <block wx:for="{{background}}" wx:for-item="img_url" wx:key="*this">
+          <swiper-item>
+            <view class="swiper-item">
+              <image src="{{img_url}}" mode='aspectFill'/>
+            </view>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+    <view class="page-section" style="margin-top: 40rpx;margin-bottom: 0;">
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_switch">
+          <view class="weui-cell__bd">指示点</view>
+          <view class="weui-cell__ft">
+            <switch checked="{{indicatorDots}}" bindchange="changeIndicatorDots" />
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_switch">
+          <view class="weui-cell__bd">自动播放</view>
+          <view class="weui-cell__ft">
+            <switch checked="{{autoplay}}" bindchange="changeAutoplay" />
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="page-section page-section-spacing">
+      <view class="page-section-title">
+        <view>这是一个小游戏</view>
+        <text>游戏难度， 拖动下面的条改变    </text>
+        <text class="info">{{duration}}</text>
+      </view>
+      <slider bindchange="durationChange" value="{{duration}}" min="500" max="2000"/>
+      <!-- <view class="page-section-title">
+        <text>自动播放间隔时长(ms)</text>
+        <text class="info">{{interval}}</text>
+      </view>
+      <slider bindchange="intervalChange" value="{{interval}}" min="2000" max="10000"/> -->
+    </view>
+
+    <button bindtap='start'>先点击此处确定，再从右下笑脸开始游戏</button>
+
+  </view>
+</view>
+
+<loading hidden="{{loadingHidden}}">
+      加载中...
+</loading>
